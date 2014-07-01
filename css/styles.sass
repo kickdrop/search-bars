@@ -1,0 +1,269 @@
+@import bourbon
+
+html, body
+  width: 100%
+
+body
+  font-family: 'Roboto Slab', serif
+  color: black
+  background-color: #f1f1f1
+  font-size: 15px
+
+h1
+  font-size: 60px
+  letter-spacing: -0.03em
+
+p
+  margin-bottom: 15px
+
+a
+  color: #55ACEE
+  &:hover
+    color: #000
+    text-decoration: none
+
+nav
+  height: 80px
+  background: #222222
+  width: 100%
+
+  .logo
+    float: left
+    margin: 15px 0 0 20px
+
+  a.btn-search
+    float: right
+    color: #999
+    font-size: 18px
+    display: inline-block
+    padding: 22px 0
+    width: 80px
+    text-align: center
+    height: 80px
+    @include transition(background-color .1s linear)
+
+    &:hover
+      background-color: rgba(255,255,255,.1)
+
+    > .fa
+      font-size: 32px
+      vertical-align: middle
+      color: #fff
+
+.main-content
+  padding-top: 60px
+  padding-bottom: 20px
+  text-align: center
+
+  .links
+    margin: 20px 0 80px
+
+    a
+      background-color: transparent
+      border: 2px solid #f0ac49
+      color: #f0ac49
+      border: 2px solid #f0ac49
+      padding: 12px 32px 13px
+      box-shadow: none
+      font-size: 17px
+      margin: 0 8px 16px
+      border-radius: 0
+      @include transition(all .2s)
+
+      &:hover
+        background-color: #fff
+
+      &.active
+        background-color: #f0ac49
+        color: #fff
+
+  .item
+    background-color: rgba(0,0,0,.05)
+    height: 300px
+    border-radius: 5px
+    margin-bottom: 30px
+
+.search-input-unfold
+  width: 100%
+  height: 0px
+  display: block
+  overflow: hidden
+  position: relative
+  background-color: #222
+  @include transition(height .25s .2s)
+  @include perspective(1600)
+
+  form
+    background-color: #fff
+    height: 120px
+    position: relative
+    @include transform(rotateX(-100deg))
+    @include transform-origin(top center)
+    @include transition(all 0.25s linear)
+
+    &:after
+      content: "\f002"
+      font-family: FontAwesome
+      @include position(absolute, 20px 0 0 25px)
+      font-size: 50px
+      color: #e8e8e8
+
+  &.open
+    height: 120px
+    @include transition-delay(0s)
+
+    form
+      @include transform(rotateX(0))
+      @include transition-delay(.2s)
+
+  input
+    border: 0
+    font-size: 50px
+    padding: 0 120px 0 110px
+    outline: none
+    margin-top: 22px
+    background-color: transparent
+    width: 100%
+    @include placeholder
+      color: #e6e6e6
+
+  .close
+    font-size: 60px
+    font-family: sans-serif
+    font-weight: 300
+    @include position(absolute, 25px 30px 0 0)
+
+
+.search-input-slide
+  width: 100%
+  height: 0px
+  border-bottom: 0
+  background-color: #fff
+  display: block
+  overflow: hidden
+  position: relative
+  @include transition(height .25s)
+
+  &:after
+    content: "\f002"
+    font-family: FontAwesome
+    @include position(absolute, 28px 0 0 32px)
+    font-size: 66px
+    color: #e8e8e8
+
+  &.open
+    height: 160px
+    border-bottom: 1px solid #d6d6d6
+
+  input
+    border: 0
+    font-size: 66px
+    padding: 0 120px 0 135px
+    outline: none
+    margin-top: 28px
+    background-color: transparent
+    width: 100%
+    @include placeholder
+      color: #e6e6e6
+
+  .close
+    font-size: 66px
+    font-family: sans-serif
+    font-weight: 300
+    @include position(absolute, 40px 30px 0 0)
+
+
+.search-input-fullscreen
+  width: 100%
+  height: 100%
+  background-color: #fff
+  background-color: rgba(255,255,255,.95)
+  z-index: -10
+  opacity: 0
+  display: table
+  @include position(fixed, 0px 0 0 0px)
+  @include transition(opacity .25s linear)
+
+  &.open
+    opacity: 1
+    z-index: 10
+
+  form
+    display: table-cell
+    vertical-align: middle
+    position: relative
+
+    &:after
+      content: "\f002"
+      font-family: FontAwesome
+      @include position(absolute, 50% 0 0 50px)
+      margin-top: -65px
+      font-size: 90px
+      color: #d9d9d9
+
+  input
+    border: 0
+    font-size: 90px
+    padding: 0 120px 0 185px
+    outline: none
+    background-color: transparent
+    width: 100%
+    @include placeholder
+      color: #ccc
+
+  .close
+    font-size: 80px
+    font-weight: 300
+    font-family: sans-serif
+    opacity: .35
+    @include position(fixed, 20px 30px 0 0)
+
+    &:hover
+      opacity: .5
+
+
+@media (max-width: 767px)
+  .search-input-unfold
+    form
+      height: 100px
+
+      &:after
+        @include position(absolute, 24px 0 0 15px)
+        font-size: 35px
+
+    &.open
+      height: 100px
+
+    input
+      font-size: 36px
+      padding: 0 70px
+      margin-top: 22px
+
+    .close
+      font-size: 50px
+      @include position(absolute, 20px 15px 0 0)
+
+  .search-input-slide
+    &:after
+      @include position(absolute, 20px 0 0 15px)
+      font-size: 40px
+
+    &.open
+      height: 100px
+
+    input
+      font-size: 36px
+      padding: 0 70px
+      margin-top: 22px
+
+    .close
+      font-size: 50px
+      @include position(absolute, 20px 15px 0 0)
+
+  .search-input-fullscreen
+    form
+      &:after
+        display: none
+    input
+      font-size: 50px
+      padding: 0 20px 0
